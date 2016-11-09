@@ -39,7 +39,7 @@ class tripleo::profile::base::heat::engine (
 
   include ::tripleo::profile::base::heat
 
-  if $step >= 4 or ( $step >= 3 and $sync_db ) {
+  if $step >= 1 or ( $step >= 3 and $sync_db ) {
     include ::heat::engine
   }
 
