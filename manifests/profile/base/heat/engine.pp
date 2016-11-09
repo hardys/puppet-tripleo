@@ -39,8 +39,16 @@ class tripleo::profile::base::heat::engine (
 
   include ::tripleo::profile::base::heat
 
-  if $step >= 4 or ( $step >= 3 and $sync_db ) {
-    include ::heat::engine
+  if ( $step >= 3 ) {
+   class { '::heat::engine':
+           enabled => true
+    }
+  }
+
+  if $step >= 4 {
+        class { '::heat::engine':
+           enabled => false
+    }
   }
 
 }
